@@ -23,6 +23,7 @@ class AuthTokenTest {
     val authTokenReadAll = generateAuthToken("username", Seq(":r"))
     assertEquals(true, authTokenReadAll.isValidForPath("/username/", "GET"))
     assertEquals(true, authTokenReadAll.isValidForPath("/username/123", "GET"))
+    assertEquals(false, authTokenReadAll.isValidForPath("/username/123", "PUT"))
     assertEquals(false, authTokenReadAll.isValidForPath("/otheruser/", "GET"))
     
     val authTokenWriteAll = generateAuthToken("username", Seq(":rw"))
